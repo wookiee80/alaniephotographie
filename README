@@ -1,0 +1,11 @@
+Projet perso pour creation de site web
+
+Avec une partie visiteur où l'on a:
+-l'accueil
+-galeries photos
+-à propos
+-formulaire de contact
+
+Une partie admin avec:
+-un CRUD des galeries photos
+-mise en place de mot de passe pour rendre des galeries privées.
