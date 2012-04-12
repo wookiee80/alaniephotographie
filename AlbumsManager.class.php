@@ -1,5 +1,8 @@
 <?php
-
+/**
+ *Classe AlbumsManager
+ * @author: wookiee 
+ **/
 class AlbumsManager
 {
     private $_db;
