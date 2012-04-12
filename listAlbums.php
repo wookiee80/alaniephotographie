@@ -20,6 +20,7 @@ if(!empty($albums))
         opendir('/server/php/'.$unAlbum->dir());
         $listePhotos = scandir('/server/php/'.$unAlbum->dir());
         $random = rand(1,  count($listePhotos));
+        echo $random;
         echo '<td>'.$unAlbum->titre().'<br/>'.$listePhotos[$random].'</td>';
         $i++;
         if($i%4 == 0)
