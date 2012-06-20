@@ -14,9 +14,7 @@ error_reporting(E_ALL);
 //error_reporting(E_ALL | E_STRICT);
 
 require('upload.class.php');
-$mydir = $_GET['dir'];
 
-$upload_handler = new UploadHandler(NULL,$mydir);
 
 
 header('Pragma: no-cache');
@@ -32,18 +30,24 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     case 'HEAD':
     case 'GET':
+        $mydir = $_GET['dir'];
+        $upload_handler = new UploadHandler(NULL,$mydir);
         $upload_handler->get();
         break;
     case 'POST':
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
-	    
+	    $mydir = $_REQUEST['dir'];
+            $upload_handler = new UploadHandler(NULL,$mydir);
             $upload_handler->delete();
         } else {
+            $mydir = $_GET['dir'];
+            $upload_handler = new UploadHandler(NULL,$mydir);
             $upload_handler->post();
         }
         break;
     case 'DELETE':
-	echo "<script> alert('".$mydir."');</script>";
+        $mydir = $_REQUEST['dir'];
+        $upload_handler = new UploadHandler(NULL,$mydir);
         $upload_handler->delete();
         break;
     default:

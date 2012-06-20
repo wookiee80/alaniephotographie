@@ -20,6 +20,7 @@ class UploadHandler
             'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/'.$mydir.'/',
             'upload_url' => $this->getFullUrl().'/'.$mydir.'/',
             'param_name' => 'files',
+            'dir' => $mydir,
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
             'delete_type' => 'DELETE',
@@ -70,8 +71,8 @@ class UploadHandler
     }
     
     protected function set_file_delete_url($file) {
-        $file->delete_url = $this->options['script_url'].'?dir='.$this->options['upload_url']
-            .'?file='.rawurlencode($file->name);
+        $file->delete_url = $this->options['script_url'].'?dir='.$this->options['dir']
+            .'&file='.rawurlencode($file->name);
         $file->delete_type = $this->options['delete_type'];
         if ($file->delete_type !== 'DELETE') {
             $file->delete_url .= '&_method=DELETE';
@@ -402,8 +403,10 @@ class UploadHandler
 //    }
     
     public function delete() {
+        
         $file_name = isset($_REQUEST['file']) ?
             basename(stripslashes($_REQUEST['file'])) : null;
+        echo $file_name;
         $file_path = $this->options['upload_dir'].$file_name;
         $success = is_file($file_path) && $file_name[0] !== '.' && unlink($file_path);
         if ($success) {
@@ -413,6 +416,10 @@ class UploadHandler
                     unlink($file);
                 }
             }
+        }
+        else
+        {
+            echo 'pas bon';
         }
         header('Content-type: application/json');
         echo json_encode($success);
