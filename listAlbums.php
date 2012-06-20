@@ -16,11 +16,10 @@ if(!empty($albums))
     echo '<table><tr>';
     foreach ($albums as $unAlbum)
     {
-        
-        opendir('/server/php/'.$unAlbum->dir());
-        $listePhotos = scandir('/server/php/'.$unAlbum->dir());
-        $random = rand(1,  count($listePhotos));
-        echo '<td>'.$unAlbum->titre().'<br/>'.$listePhotos[$random].'</td>';
+        opendir('server/php/'.$unAlbum->dir().'/thumbnails/');
+        $listePhotos = scandir('server/php/'.$unAlbum->dir().'/thumbnails/');
+        $random = rand(0,count($listePhotos)-1);
+        echo '<td>'.$unAlbum->titre().'<br/><img href="server/php/'.$unAlbum->dir().'/thumbnails/'.$listePhotos[$random].'"/></td>';
         $i++;
         if($i%4 == 0)
         {

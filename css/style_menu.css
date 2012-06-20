@@ -1,0 +1,126 @@
+@font-face {    /*On récupère une police depuis le site http://www.fontsquirrel.com/*/
+    font-family: 'GoodFootRegular';
+    src: url('goodfoot-webfont.eot');
+    src: url('goodfoot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('goodfoot-webfont.woff') format('woff'),
+         url('goodfoot-webfont.ttf') format('truetype'),
+         url('goodfoot-webfont.svg#GoodFootRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*   /*On attribue notre police à tout le site*/
+{
+    font-family: 'GoodFootRegular', serif;
+}
+
+#banniere
+{
+    background: url("../img/bannalanie01.png");
+    background-repeat: no-repeat;
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+}
+
+#bloc_page
+{
+    width: 100%;
+}
+
+#menu /* Le menu général (pas le menu déroulant)*/
+{
+    width: 50%; /*On donne une largeur au menu*/
+    height: auto; /*On donne une longueur auto pour IE7  sinon on aura pas de menu déroulant*/
+    
+    list-style-type: none; /*Pour retirer les puces de la liste*/
+    
+    margin: 0 auto; /*Marge en automatique pour centrer le menu dans la page*/
+    padding: 0; /*Marge interne à 0 pour ne pas avoir de soucis avec les différents navigateurs*/
+    border: 0; /*Idem que pour les marges internes*/
+    text-align: center; /*Alignement du texte dans les cellules*/
+    font-size: 1.6em;/*Taille de la police des cellules*/
+}
+
+#menu > li  /*Uniquement pour la liste de 1er niveau*/
+{
+    float: left; /*Permet de placer les éléments <li> horizontalement*/
+    width: 25%; /*On donne une largeur à nos cellules*/
+    /* margin: 1px; On espace nos cellules de 1px*/
+    padding: 0;
+}
+
+#menu li a  /*Pour les liens de 1er niveau*/
+{
+    display: block; /*On passe nos balise de lien en block*/
+    color: #ffcccc; /*On donne une couleur à la police*/
+    background-color: rgb(102,102,102); /*On donne un fond solide par sécurité pour les navigateurs qui ne gère
+    pas la transparence*/
+    background-color: rgba(0,0,0,0.5); /*Fond transparent pour les navigateurs qui l'acceptent'*/
+    margin: 0; /*Pour ne pas avoir de problèmes suivant le navigateur*/
+    padding: 4px 8px; /*Les marges internes*/
+    border: solid 1px #ffcccc; /*On met une bordure*/
+    border-radius: 5px;/*On arrondi les angles*/
+    text-decoration: none; /*On retire les sous-lignages des liens du menu*/
+    box-shadow: 6px 6px 5px black;/*Une ombre sur nos cellules*/
+    text-shadow: 6px 6px 2px black;/*Une ombre sur le texte de nos cellules*/
+    behavior: url(css/PIE.php);
+    
+}
+
+#menu li a:hover  /*Comportement au survol des liens du menu*/
+{
+    background-color: rgb(255,204,204); /*Couleur de la cellule au survol au cas ou pas de gestion de transparence*/
+    background-color: rgba(255,204,204,0.5); /*Et dans le cas de gestion de transparence*/
+    color: rgb(102,102,102);
+    color: rgba(0,0,0,0.5); /*Couleur de la police au survol avec ou sans transparence*/
+    
+}
+
+#menu .menuderoulant    /*Pour le menu déroulant*/
+{
+    display: none; /*Pour le faire disparaitre*/
+    list-style-type: none; /*Pour enlever les puces de la liste*/
+    margin: 0; /*Pas de marge interne, externe ni de bordure pour être clean*/
+    padding: 0;
+    border: 0;
+    position: absolute; /*Pour eviter de pousser ce qu'il y a dessous le menu'*/
+    text-align: center; /*Alignement du texte dans les cellules*/
+    
+}
+
+#menu .menuderoulant li /*Pour la liste de 2eme niveau*/
+{
+    margin: 0;
+    paddin: 0;
+    border: 0;
+    width: 118%; /*On donne une largeur aux cellules*/
+    border-top: solid transparent 1px; /*On créé une bordure en haut pour espacer les cellules*/
+}
+
+#menu .menuderoulant li a   /*Pour les liens du menu déroulant*/
+{
+    display: block; /*On passe nos balise de lien en block*/
+    color: #ffcccc; /*On donne une couleur à la police*/
+    background-color: rgb(102,102,102); /*On donne un fond solide par sécurité pour les navigateurs qui ne gère
+    pas la transparence*/
+    background-color: rgba(0,0,0,0.5); /*Fond transparent pour les navigateurs qui l'acceptent'*/
+    margin: 0; /*Pour ne pas avoir de problèmes suivant le navigateur*/
+    padding: 4px 8px; /*Les marges internes*/
+    border: solid 1px #ffcccc; /*On met une bordure*/
+    text-decoration: none; /*On retire les sous-lignages des liens du menu*/
+}
+
+#menu .menuderoulant li a:hover /*Au survol des liens du menu déroulant*/
+{
+    background-color: rgb(255,204,204); /*Couleur de la cellule au survol au cas ou pas de gestion de transparence*/
+    background-color: rgba(255,204,204,0.5); /*Et dans le cas de gestion de transparence*/
+    color: rgb(102,102,102);
+    color: rgba(0,0,0,0.5); /*Couleur de la police au survol avec ou sans transparence*/
+}
+
+#menu li:hover > .menuderoulant
+{
+    display: block; /*Pour faire apparaitre notre menu déroulant au survol 
+                    de notre menu de 1er niveau*/
+}
