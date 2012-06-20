@@ -36,12 +36,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     case 'POST':
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
+	    
             $upload_handler->delete();
         } else {
             $upload_handler->post();
         }
         break;
     case 'DELETE':
+	echo "<script> alert('".$mydir."');</script>";
         $upload_handler->delete();
         break;
     default:

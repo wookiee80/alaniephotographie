@@ -70,7 +70,7 @@ class UploadHandler
     }
     
     protected function set_file_delete_url($file) {
-        $file->delete_url = $this->options['script_url']
+        $file->delete_url = $this->options['script_url'].'?dir='.$this->options['upload_url']
             .'?file='.rawurlencode($file->name);
         $file->delete_type = $this->options['delete_type'];
         if ($file->delete_type !== 'DELETE') {
@@ -383,6 +383,23 @@ class UploadHandler
         }
         echo $json;
     }
+    
+//    public function delete() {
+//        $file_name = isset($_REQUEST['file']) ?
+//            basename(stripslashes($_REQUEST['file'])) : null;
+//        $file_path = $this->options['upload_dir'].$file_name;
+//        $success = is_file($file_path) && $file_name[0] !== '.' && unlink($file_path);
+//        if ($success) {
+//            foreach($this->options['image_versions'] as $version => $options) {
+//                $file = $options['upload_dir'].$file_name;
+//                if (is_file($file)) {
+//                    unlink($file);
+//                }
+//            }
+//        }
+//        header('Content-type: application/json');
+//        echo json_encode($success);
+//    }
     
     public function delete() {
         $file_name = isset($_REQUEST['file']) ?
