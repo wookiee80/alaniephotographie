@@ -10,6 +10,7 @@
         <title>Alanie photographie</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/style_menu.css"/>
+	<link rel="stylesheet" type="text/css" href="css/global_style.css"/>
         <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -31,8 +32,6 @@
                     <li><a href="#">Mariages</a></li>
                     <li><a href="#">Portraits</a></li>
                     <li><a href="#">Animaux</a></li>
-                    <li><a href="#">Paysages</a></li>
-                    <li><a href="#">Divers</a></li>
                 </ul>
             </li>
             <li><a href="#">Contact</a></li>

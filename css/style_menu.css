@@ -1,32 +1,17 @@
-@font-face {    /*On récupère une police depuis le site http://www.fontsquirrel.com/*/
-    font-family: 'GoodFootRegular';
-    src: url('goodfoot-webfont.eot');
-    src: url('goodfoot-webfont.eot?#iefix') format('embedded-opentype'),
-         url('goodfoot-webfont.woff') format('woff'),
-         url('goodfoot-webfont.ttf') format('truetype'),
-         url('goodfoot-webfont.svg#GoodFootRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
-*   /*On attribue notre police à tout le site*/
-{
-    font-family: 'GoodFootRegular', serif;
-}
 
 #banniere
 {
-    background: url("../img/bannalanie01.png");
+    background: url("../img/bannglob.jpg");
     background-repeat: no-repeat;
-    width: 90%;
-    height: 500px;
+    width: 700px;
+    height: 300px;
     margin: 0 auto;
+    margin-bottom: 10px;
+    border-bottom: solid thick antiquewhite;
+    
 }
 
-#bloc_page
-{
-    width: 100%;
-}
 
 #menu /* Le menu général (pas le menu déroulant)*/
 {
@@ -39,7 +24,7 @@
     padding: 0; /*Marge interne à 0 pour ne pas avoir de soucis avec les différents navigateurs*/
     border: 0; /*Idem que pour les marges internes*/
     text-align: center; /*Alignement du texte dans les cellules*/
-    font-size: 1.6em;/*Taille de la police des cellules*/
+    font-size: 1.3em;/*Taille de la police des cellules*/
 }
 
 #menu > li  /*Uniquement pour la liste de 1er niveau*/
@@ -94,7 +79,7 @@
     margin: 0;
     paddin: 0;
     border: 0;
-    width: 118%; /*On donne une largeur aux cellules*/
+    width: 130%; /*On donne une largeur aux cellules*/
     border-top: solid transparent 1px; /*On créé une bordure en haut pour espacer les cellules*/
 }
 
