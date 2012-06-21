@@ -12,6 +12,7 @@ if(isset($_POST['creer']) && !empty($_POST['titre']) && !empty($_POST['intro']))
                              'intro'=> $_POST['intro'],
                              'dir'=>$_POST['titre'].date("dmYHis"),
                              'date'=>Date("d-m-Y"),
+                             'categorie'=>$_POST['categorie']
                         ));
     
     
@@ -40,6 +41,15 @@ else
         <form method="post" action ="">
             Titre : <input type="text" name="titre"/><br/>
             Infos sur l'album: <textarea name="intro"></textarea><br/>
+            Catégorie : <select name="categorie">
+                            <option>Maternité</option>
+                            <option>Nouveaux nés</option>
+                            <option>Bébés</option>
+                            <option>Enfants</option>
+                            <option>Mariages</option>
+                            <option>Portraits</option>
+                            <option>Animaux</option>
+                        </select>
             <input type="submit" name ="creer" value="Créer"/>
         </form>
         </fieldset>

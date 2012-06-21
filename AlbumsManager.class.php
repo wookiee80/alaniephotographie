@@ -25,13 +25,15 @@ class AlbumsManager
         $q = $this->_db->prepare('INSERT INTO albums SET titre=:titre,
                                                          date=:date,
                                                          intro=:intro,
-                                                         dir=:dir');
+                                                         dir=:dir,
+                                                         categorie=:categorie');
         
         // puis on assigne les valeurs de notre objet album:
         $q->bindValue('titre',$album->titre());
         $q->bindValue('date',$album->date());
         $q->bindValue('intro',$album->intro());
         $q->bindValue('dir',$album->dir());
+        $q->bindValue('categorie',$album->categorie());
         
         // puis on execute la requète:
         $q->execute();
@@ -44,13 +46,15 @@ class AlbumsManager
     {
         //pour modifier un album déjà créé:
         $q = $this->_db->prepare('UPDATE albums SET titre=:titre,
-                                                    date=:date 
-                                                    intro=:intro
+                                                    date=:date, 
+                                                    intro=:intro,
+                                                    categorie=:categorie,
                                    WHERE id=:id');
         
         $q->bindValue('titre',$album->titre());
         $q->bindValue('date',$album->date());
         $q->bindValue('intro',$album->intro());
+        $q->binValue('categorie',$album->categorie());
         
         $q->execute();
     }
@@ -64,7 +68,7 @@ class AlbumsManager
     {
         if(is_int($infos))
         {
-        $q = $this->_db->prepare('SELECT id, titre, date, intro, dir
+        $q = $this->_db->prepare('SELECT id, titre, date, intro, dir, categorie
                                   FROM albums
                                   WHERE id='.$infos);
         
@@ -75,7 +79,7 @@ class AlbumsManager
         
         elseif (is_string($infos))
         {
-            $q = $this->_db->prepare('SELECT id, titre, date, intro, dir
+            $q = $this->_db->prepare('SELECT id, titre, date, intro, dir, categorie
                                       FROM albums
                                       WHERE titre=:titre');
             $q->execute(array(':titre'=>$infos));
@@ -89,7 +93,7 @@ class AlbumsManager
     {
         $albums = array();
         
-        $q = $this->_db->prepare('SELECT id, titre, date, intro, dir
+        $q = $this->_db->prepare('SELECT id, titre, date, intro, dir, categorie
                                   FROM albums 
                                   ORDER BY date DESC');
         $q->execute();
@@ -98,6 +102,7 @@ class AlbumsManager
         {
             
             $albums[] = new Album($donnees);
+
         }
         return $albums;
     }

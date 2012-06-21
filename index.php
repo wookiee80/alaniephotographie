@@ -1,9 +1,5 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+include_once 'controleurs/controleur_menu.php';
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -26,12 +22,19 @@
             <li><a href="#">Albums</a>
                 <ul class="menuderoulant">
                     <li><a href="#">Maternité</a></li>
+                    <?php echo $menuMaternite ?>
                     <li><a href="#">Nouveaux nés</a></li>
+                    <?php echo $menuNNe ?>
                     <li><a href="#">Bébés</a></li>
+                    <?php echo $menuBebe ?>
                     <li><a href="#">Enfants</a></li>
+                    <?php echo $menuEnfant ?>
                     <li><a href="#">Mariages</a></li>
+                    <?php echo $menuMariage ?>
                     <li><a href="#">Portraits</a></li>
+                    <?php echo $menuportrait ?>
                     <li><a href="#">Animaux</a></li>
+                    <?php echo $menuAnimeaux ?>
                 </ul>
             </li>
             <li><a href="#">Contact</a></li>

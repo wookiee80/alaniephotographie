@@ -1,5 +1,4 @@
 /*
- * jQuery File Upload Plugin Localization Example 6.5
  * https://github.com/blueimp/jQuery-File-Upload
  *
  * Copyright 2012, Sebastian Tschan
@@ -12,16 +11,16 @@
 window.locale = {
     "fileupload": {
         "errors": {
-            "maxFileSize": "File is too big",
-            "minFileSize": "File is too small",
-            "acceptFileTypes": "Filetype not allowed",
-            "maxNumberOfFiles": "Max number of files exceeded",
+            "maxFileSize": "Le fichier est trop volumineux",
+            "minFileSize": "Le fichier est trop petit",
+            "acceptFileTypes": "Type de fichier non autorisé",
+            "maxNumberOfFiles": "Nombre de fichier limité atteint",
             "uploadedBytes": "Uploaded bytes exceed file size",
             "emptyResult": "Empty file upload result"
         },
-        "error": "Error",
-        "start": "Start",
-        "cancel": "Cancel",
-        "destroy": "Delete"
+        "error": "Erreur",
+        "start": "Démarrer",
+        "cancel": "Annuler",
+        "destroy": "Supprimer"
     }
 };

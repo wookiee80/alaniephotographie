@@ -406,23 +406,19 @@ class UploadHandler
         
         $file_name = isset($_REQUEST['file']) ?
             basename(stripslashes($_REQUEST['file'])) : null;
-        echo $file_name;
         $file_path = $this->options['upload_dir'].$file_name;
         $success = is_file($file_path) && $file_name[0] !== '.' && unlink($file_path);
         if ($success) {
             foreach($this->options['image_versions'] as $version => $options) {
                 $file = $options['upload_dir'].$file_name;
+                
                 if (is_file($file)) {
-                    unlink($file);
+                    unlink($file);                   
                 }
             }
         }
-        else
-        {
-            echo 'pas bon';
-        }
         header('Content-type: application/json');
-        echo json_encode($success);
+        //echo json_encode($success);
     }
 
 }

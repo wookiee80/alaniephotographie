@@ -13,6 +13,7 @@ class Album
     private $_date;
     private $_intro;
     private $_dir;
+    private $_categorie;
     
     //constructeur:
     public function __construct(array $donnees)
@@ -59,6 +60,11 @@ class Album
     {
         return $this->_dir;
     }
+    
+    public function categorie()
+    {
+        return $this->_categorie;
+    }
 
     public function setTitre($titre)
     {
@@ -95,9 +101,15 @@ class Album
         $this->_dir = $regexbis;
     }
     
+    public function setCategorie($categorie)
+    {
+        $this->_categorie = $categorie;
+    }
+
+
     public function createDir()
     {
-        if(!file_exists('albums/'.$this->_dir))
+        if(!is_dir('server/php/'.$this->_dir))
         {
             $old = umask(0);
             mkdir('server/php/'.$this->_dir,0777);

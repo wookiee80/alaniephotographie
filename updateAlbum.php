@@ -1,28 +1,31 @@
 <?php
-include 'autoload.php';
-include 'jqueryfileupload/server/php/upload.class.php';
+include 'autoload.php';// Ce qui nous sert pour charger automatiquement nos classes
+include 'jqueryfileupload/server/php/upload.class.php';// on inclu la classe pour l'upload
+// car l'autoload ne fonctionne pas pour elle
 
 $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué
 $db->query('set names utf8');    
 $manager = new AlbumsManager($db);
 
-if(isset($_GET['album']))
+if(isset($_GET['album']))// si le titre de l'album est bien passé dans l'url:
 {
     
-    $titre = $_GET['album'];
-    $album =  $manager->getAlbum($titre);
+    $titre = $_GET['album'];// creation d'une varible avec le titre de l'album
+    $album =  $manager->getAlbum($titre);// récupération des infos de l'albums dans la bdd
     
-    echo $album->titre().'<br/>';
-    echo $album->date().'<br/>';
-    echo nl2br(stripslashes($album->intro())).'<br/>';
-    echo $album->dir().'<br/>';
+    // On créé une varible avec le résumé de l'album pour l'afficher par la suite:
+    $resume = nl2br(stripslashes($album->intro()));
+    
+    if(!is_dir('server/php/'.$album->dir()))// Si le repertoire pour l'album n'est pas présent:
+    {
+        $album->createDir();// On le créé avec le repertoire contenant les miniatures à l'intérieur.
+    }
 }
 ?>
 <!DOCTYPE HTML>
 <!--
 /*
- * jQuery File Upload Plugin Demo 6.5.2
  * https://github.com/blueimp/jQuery-File-Upload
  *
  * Copyright 2010, Sebastian Tschan
@@ -32,12 +35,10 @@ if(isset($_GET['album']))
  * http://www.opensource.org/licenses/MIT
  */
 -->
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>jQuery File Upload Demo</title>
-<meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bar and preview images for jQuery. Supports cross-domain, chunked and resumable file uploads. Works with any server-side platform (Google App Engine, PHP, Python, Ruby on Rails, Java, etc.) that supports standard HTML form file uploads.">
-<meta name="viewport" content="width=device-width">
+<title>Ajouter des photos</title>
 <!-- Bootstrap CSS Toolkit styles -->
 <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
 <!-- Generic page styles -->
@@ -57,13 +58,24 @@ if(isset($_GET['album']))
 
 <div class="container">
     <div class="page-header">
-        <h1>jQuery File Upload Demo</h1>
+        <h1><?php print $album->titre() ?></h1>
     </div>
-    <blockquote>
-        <p>File Upload widget with multiple file selection, drag&amp;drop support, progress bars and preview images for jQuery.<br>
-        Supports cross-domain, chunked and resumable file uploads and client-side image resizing.<br>
-        Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.</p>
-    </blockquote>
+    <div class="infoAlbum">
+        <table>
+            <tr>
+            <td>Date de création : </td>
+            <td><?php print $album->date(); ?></td>
+            </tr>
+            <tr>
+                <td>Résumé : </td>
+                <td><?php print $resume ?></td>
+            </tr>
+            <tr>
+                <td>Catégorie : </td>
+                <td><?php print $album->categorie(); ?></td>
+            </tr>
+        </table>
+    </div>
     <br>
     <!-- The file upload form used as target for the file upload widget -->
     <?php echo'<form id="fileupload" action= "server/php/index.php?dir='.$album->dir().'" method="POST" enctype="multipart/form-data">'; ?>
@@ -73,20 +85,20 @@ if(isset($_GET['album']))
                 <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button">
                     <i class="icon-plus icon-white"></i>
-                    <span>Add files...</span>
+                    <span>Ajouter un fichier...</span>
                     <input type="file" name="files[]" multiple>
                 </span>
                 <button type="submit" class="btn btn-primary start">
                     <i class="icon-upload icon-white"></i>
-                    <span>Start upload</span>
+                    <span>Télécharger</span>
                 </button>
                 <button type="reset" class="btn btn-warning cancel">
                     <i class="icon-ban-circle icon-white"></i>
-                    <span>Cancel upload</span>
+                    <span>Annuler</span>
                 </button>
                 <button type="button" class="btn btn-danger delete">
                     <i class="icon-trash icon-white"></i>
-                    <span>Delete</span>
+                    <span>Supprimer</span>
                 </button>
                 <input type="checkbox" class="toggle">
             </div>
