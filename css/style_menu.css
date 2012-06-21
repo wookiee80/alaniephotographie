@@ -109,3 +109,37 @@
     display: block; /*Pour faire apparaitre notre menu déroulant au survol 
                     de notre menu de 1er niveau*/
 }
+
+#menu .menuderoulant .menucategorie
+{
+    display: none; /*Pour le faire disparaitre*/
+    list-style-type: none; /*Pour enlever les puces de la liste*/
+    margin: 0; /*Pas de marge interne, externe ni de bordure pour être clean*/
+    padding: 0;
+    border: 0;
+    position: absolute; /*Pour eviter de pousser ce qu'il y a dessous le menu'*/
+    text-align: center; /*Alignement du texte dans les cellules*/
+}
+
+#menu .menuderoulant .menucategorie li /*Pour la liste de 2eme niveau*/
+{
+    display: block;
+    position:absolute;
+    margin-left:150px;
+    margin-top:-23px;
+    width: 50px; /*On donne une largeur aux cellules*/
+    border-top: solid transparent 1px; /*On créé une bordure en haut pour espacer les cellules*/
+}
+
+#menu .menuderoulant .menucategorie li a   /*Pour les liens du menu déroulant*/
+{
+    display: block; /*On passe nos balise de lien en block*/
+    color: #ffcccc; /*On donne une couleur à la police*/
+    background-color: rgb(102,102,102); /*On donne un fond solide par sécurité pour les navigateurs qui ne gère
+    pas la transparence*/
+    background-color: rgba(0,0,0,0.5); /*Fond transparent pour les navigateurs qui l'acceptent'*/
+    margin: 0; /*Pour ne pas avoir de problèmes suivant le navigateur*/
+    padding: 4px 8px; /*Les marges internes*/
+    border: solid 1px #ffcccc; /*On met une bordure*/
+    text-decoration: none; /*On retire les sous-lignages des liens du menu*/
+}

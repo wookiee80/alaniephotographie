@@ -53,89 +53,87 @@ foreach ($listeAlbums as $unAlbum)// on boucle la totalité des albums
                 continue 2;
         }
     }
-    if(count($categories['maternite']!=0))
+          $menuMaternite ='';  
+    
+    if(count($categories['maternite'])!= NULL)
     {
-        $menuMaternite = '<ul class="menuderoulant">';
+        $menuMaternite = '<ul class="menucategorie">';
         foreach($categories['maternite'] as $value)
         {
-            $menuMaternite+= '<li>'.$value.'</li>';
+            $menuMaternite.= '<li>'.$value.'</li>';
         }
-        $menuMaternite+= '</ul>';
+        $menuMaternite.= '</ul>';
     }
-    else
-        $menuMaternite ='';
     
-    if(count($categories['nouveauxnes']!=0))
+    if(count($categories['nouveauxnes'])!=NULL)
     {
-        $menuNNe = '<ul class="menuderoulant">';
+        $menuNNe = '<ul class="menucategorie">';
         foreach($categories['nouveauxnes'] as $value)
         {
-            $menuNNe+= '<li>'.$value.'</li>';
+            $menuNNe.= '<li>'.$value.'</li>';
         }
-        $menuNNe+= '</ul>';
+        $menuNNe.= '</ul>';
     }
     else
         $menuNNe ='';
     
-    if(count($categories['bebes']!=0))
+    if(count($categories['bebes'])!=NULL)
     {
-        $menuBebe = '<ul class="menuderoulant">';
+        $menuBebe = '<ul class="menucategorie">';
         foreach($categories['bebes'] as $value)
         {
-            $menuBebe+= '<li>'.$value.'</li>';
+            $menuBebe.= '<li>'.$value.'</li>';
         }
-        $menuBebe+= '</ul>';
+        $menuBebe.= '</ul>';
     }
     else
         $menuBebe='';
     
-    if(count($categories['enfants']!=0))
+    if(count($categories['enfants'])!=NULL)
     {
-        $menuEnfant = '<ul class="menuderoulant">';
+
+        $menuEnfant = '<ul class="menucategorie">';
         foreach($categories['enfants'] as $value)
         {
-            $menuEnfant+= '<li>'.$value.'</li>';
+            $menuEnfant.= '<li>'.$value.'</li>';
         }
-        $menuEnfant+= '</ul>';
+        $menuEnfant.= '</ul>';
     }
     else
         $menuEnfant='';
     
-    if(count($categories['mariages']!=0))
+    if(count($categories['mariages'])!=NULL)
     {
-        $menuMariage = '<ul class="menuderoulant">';
+        $menuMariage = '<ul class="menucategorie">';
         foreach($categories['mariages'] as $value)
         {
-            $menuMariage+= '<li>'.$value.'</li>';
+            $menuMariage.= '<li>'.$value.'</li>';
         }
-        $menuMariage+= '</ul>';
+        $menuMariage.= '</ul>';
     }
     else
         $menuMariage='';
     
-    if(count($categories['portraits']!=0))
+    if(count($categories['portraits'])!=NULL)
     {
-        $menuportrait = '<ul class="menuderoulant">';
+        $menuportrait = '<ul class="menucategorie">';
         foreach($categories['portraits'] as $value)
         {
-            $menuportrait+= '<li>'.$value.'</li>';
+            $menuportrait.= '<li>'.$value.'</li>';
         }
-        $menuportrait+= '</ul>';
+        $menuportrait.= '</ul>';
     }
     else
         $menuportrait='';
     
-    if(count($categories['animaux']!=0))
+    if(count($categories['animaux'])!=NULL)
     {
-        $menuAnimeaux = '<ul class="menuderoulant">';
+        $menuAnimeaux = '<ul class="menucategorie">';
         foreach($categories['animaux'] as $value)
         {
-            $menuAnimeaux+= '<li>'.$value.'</li>';
+            $menuAnimeaux.= '<li>'.$value.'</li>';
         }
-        $menuAnimeaux+= '</ul>';
+        $menuAnimeaux.= '</ul>';
     }
     else
         $menuAnimeaux='';
-
-    
-    echo $menuAnimeaux.$menuBebe.$menuEnfant.$menuMariage.$menuMaternite;
