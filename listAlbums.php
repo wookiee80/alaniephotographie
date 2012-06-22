@@ -18,35 +18,39 @@ if(!empty($albums))
     echo '<table><tr>';
     foreach ($albums as $unAlbum)
     {
-        
-        opendir('server/php/'.$unAlbum->dir().'/thumbnails/');
-        $listePhotos = array_diff(scandir('server/php/'.$unAlbum->dir().'/thumbnails/'),array('..', '.'));
-        
-        echo '
-            <td>'.$unAlbum->titre().'</td>
-             </tr>
-             <tr>';
-        
-        
-        $j = count($listePhotos) + 1;
-        while($j > 2)
-        {
-            
-                echo '
-                <td><img src="server/php/'.$unAlbum->dir().'/thumbnails/'.$listePhotos[$j].'"/></td>'; 
-            $j--;
-            
-            $i++;
-            if($i%4 == 0)
-            {
-                echo'</tr><tr>';
-            }
-        }
-        echo '</table><br/>
-                  <table>';
-        
+        if(is_dir('server/php/'.$unAlbum->dir()))
+	{
+	    opendir('server/php/'.$unAlbum->dir().'/thumbnails/');
+	    $listePhotos = array_diff(scandir('server/php/'.$unAlbum->dir().'/thumbnails/'),array('..', '.'));
+
+	    echo '
+		<td>'.$unAlbum->titre().'</td>
+		</tr>
+		<tr>';
+
+
+	    $j = count($listePhotos) + 1;
+	    while($j >= 2)
+	    {
+
+		    echo '
+		    <td><img src="server/php/'.$unAlbum->dir().'/thumbnails/'.$listePhotos[$j].'"/></td>'; 
+		$j--;
+
+		$i++;
+		if($i%4 == 0)
+		{
+		    echo'</tr><tr>';
+		}
+	    }
+	    echo '</table><br/>
+		    <table>';
+
+	
+	echo '</tr>
+	    </table>';
+	}
     }
-    echo '</tr>
-        </table>';
+    
 }
 

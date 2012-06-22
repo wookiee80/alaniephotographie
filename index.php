@@ -17,9 +17,9 @@ include_once 'controleurs/controleur_menu.php';
             <div id="banniere"></div>
             <nav>
         <ul id="menu">
-            <li><a href="#">Accueil</a></li>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="#">Tarifs</a></li>
-            <li><a href="#">Albums</a>
+            <li><a href="listAlbums.php">Albums</a>
                 <ul class="menuderoulant">
                     <li><a href="#">Maternité</a></li>
                     <?php echo $menuMaternite ?>
@@ -27,8 +27,8 @@ include_once 'controleurs/controleur_menu.php';
                     <?php echo $menuNNe ?>
                     <li><a href="#">Bébés</a></li>
                     <?php echo $menuBebe ?>
-                    <li><a href="#">Enfants</a></li>
-                    <?php echo $menuEnfant ?>
+                    <li><a href="#">Enfants</a><?php echo $menuEnfant ?></li>
+                    
                     <li><a href="#">Mariages</a></li>
                     <?php echo $menuMariage ?>
                     <li><a href="#">Portraits</a></li>
