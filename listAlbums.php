@@ -1,6 +1,5 @@
 <?php
 include 'autoload.php';
-include 'AlbumsManager.class.php';
 
 $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
@@ -53,4 +52,6 @@ if(!empty($albums))
     }
     
 }
+else
+    header ('location:index.php');
 

@@ -30,7 +30,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     case 'HEAD':
     case 'GET':
-        $mydir = $_GET['dir'];
+        $mydir = htmlentities($_GET['dir']);
         $upload_handler = new UploadHandler(NULL,$mydir);
         $upload_handler->get();
         break;
@@ -40,7 +40,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $upload_handler = new UploadHandler(NULL,$mydir);
             $upload_handler->delete();
         } else {
-            $mydir = $_GET['dir'];
+            $mydir = htmlentities($_GET['dir']);
             $upload_handler = new UploadHandler(NULL,$mydir);
             $upload_handler->post();
         }
